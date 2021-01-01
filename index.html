@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="fonts/fontawesome/all.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+    <div id="blur-content">
+        <div class="menu-bar"><!-- 
+        --><input id="search-bar" type="search" placeholder="Search"><!-- 
+        --><button id="settings-button"><i class="fas fa-cog"></i></button><!-- 
+        --><button id="add-entry-button"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Entry Date<span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-sort-up fa-stack-1x"></i></span></th>
+                <th>Deceased Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
+                <th>Contact Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
+                <th>Contact Email <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
+                <th>Contact Phone <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+        </tbody>
+    </table>
+    </div>
+    
+
+    <div id="add-window" style="visibility: hidden;">
+        <input type="text" placeholder="Deceased Name">
+        <input type="text" placeholder="Contact Name">
+        <input type="text" placeholder="Contact Email">
+        <input type="text" placeholder="Contact Phone">
+
+        <div id="add-button-container">
+            <button id="close-add-button">Cancel</button>
+            <button id="submit-add-button">Submit</button>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
