@@ -36,14 +36,22 @@
     
 
     <div id="add-window" style="visibility: hidden;">
-        <input type="text" placeholder="Deceased Name">
-        <input type="text" placeholder="Contact Name">
-        <input type="text" placeholder="Contact Email">
-        <input type="text" placeholder="Contact Phone">
+        <h1 id="add-title" style="visibility: hidden;">Add Entry</h1>
+        <h1 id="edit-title" style="visibility: hidden;">Edit Entry</h1>
+
+        <input class="half-width" type="text" placeholder="Deceased First Name"><!-- 
+        --><input class="half-width" type="text" placeholder="Deceased Last Name">
+
+        <input class="half-width" type="text" placeholder="Contact First Name"><!-- 
+        --><input class="half-width" type="text" placeholder="Contact Last Name">
+
+        <input class="full-width" type="text" placeholder="Contact Email">
+        <input class="full-width" type="text" placeholder="Contact Phone">
 
         <div id="add-button-container">
             <button id="close-add-button">Cancel</button>
-            <button id="submit-add-button">Submit</button>
+            <button id="submit-add-button" style="visibility: hidden;">Submit</button>
+            <button id="submit-edit-button" style="visibility: hidden;">Submit</button>
         </div>
     </div>
 

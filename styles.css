@@ -102,12 +102,24 @@ tbody tr:nth-child(odd) {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 30em;
+  padding: none;
+  border: 1px #fff solid;
 }
 
-#add-window input {
-  display: block;
-  width: 20em;
+#add-window h1 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+#add-window .full-width {
+  width: 28.5em;
   margin: 0.5em;
+}
+
+#add-window .half-width{
+  width: 13.75em;
+  margin: 0.5em 0 0.5em 0.5em;
 }
 
 #add-button-container {
@@ -119,7 +131,6 @@ tbody tr:nth-child(odd) {
   padding: 0.25em;
   margin: 0.5em;
   border: solid 1px #fff;
-  border-radius: 5px;
 }
 
 .sort-faded {
