@@ -1,138 +1,179 @@
+
+/* ----------------------------------------------------------------------------------------------
+   Styles for fonts
+   ------------------------------------------------------------------------------------------- */
+
 /* inconsolata-200 - latin */
 @font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 200;
-  src: local(''),
-    url('fonts/inconsolata/inconsolata-v20-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('fonts/inconsolata/inconsolata-v20-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 200;
+    src: local(''),
+        url('fonts/inconsolata/inconsolata-v20-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('fonts/inconsolata/inconsolata-v20-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inconsolata-regular - latin */
 @font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 400;
-  src: local(''),
-    url('fonts/inconsolata/inconsolata-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('fonts/inconsolata/inconsolata-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('fonts/inconsolata/inconsolata-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('fonts/inconsolata/inconsolata-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inconsolata-800 - latin */
 @font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 800;
-  src: local(''),
-    url('fonts/inconsolata/inconsolata-v20-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('fonts/inconsolata/inconsolata-v20-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 800;
+    src: local(''),
+        url('fonts/inconsolata/inconsolata-v20-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('fonts/inconsolata/inconsolata-v20-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* ----------------------------------------------------------------------------------------------
+   Styles for entire page
+   ------------------------------------------------------------------------------------------- */
 
+/* Set  page font and font-color */
 * {
-  font-family: Inconsolata;
-  color: #fff
+    font-family: Inconsolata;
+    color: #fff
 }
 
 body {
-  background-color: #333;
-  margin: 0;
+    background-color: #333;
+    margin: 0;
 }
 
-.menu-bar {
-  background: #222;
-  padding: 0;
-  border-left: 62px solid #222;
-}
-
+/* Button used in menu bar and add window */
 button {
-  cursor: pointer;
-  user-select: none;
-  font-size: 1em;
-  border: none;
-  background: none;
-  outline: none;
-  margin: none;
-  padding: 0.75em;
-}
-
-input {
-  background-color: #333;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  padding: 0.25em;
-  margin: 0.5em;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1em;
+    border: none;
+    background: none;
+    outline: none;
+    margin: none;
+    padding: 0.75em;
 }
 
 button:hover {
-  background: #333
+    background-color: #333
 }
 
-.menu-bar button {
-  float: right;
+/* Input used in menu bar and add window */
+input {
+    background-color: #333;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0.25em;
+    margin: 0.5em;
 }
+
+/* ----------------------------------------------------------------------------------------------
+   Styles for menu bar
+   ------------------------------------------------------------------------------------------- */
+
+#menu-bar {
+    position: fixed;
+    width: 100%;
+    background: #222;
+    padding: 0;
+    z-index: 1;
+}
+
+#menu-bar button {
+    float: right;
+}
+
+#spacer {
+    width: 100%;
+    height: 2.5em;
+}
+
+/* ----------------------------------------------------------------------------------------------
+   Styles for table
+   ------------------------------------------------------------------------------------------- */
 
 table {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    width: 100%;
 }
 
 th {
-  cursor: pointer;
-  user-select: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Make up-down combo arrows for sorting less opaque. Single, fully opaque arrow placed in js 
+   shows the user which colomn sort is based on */
+.fa-sort {
+    opacity: 0.3;
 }
 
 td, th {
-  font-family: Inconsolata;
-  text-align: left;
-  padding: 8px;
+    text-align: left;
+    padding: 0.5em;
 }
 
 thead tr {
-  background-color: #333
+    background-color: #333
 }
 
+/* alternate table colors */
 tbody tr:nth-child(odd) {
-  background-color: #222;
+    background-color: #222;
 }
+
+/* Change edit/map icon colors on hover */
+.fa-pen:hover, .fa-map-marker-alt:hover {
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------------------------------------------
+   Styles for add window
+   ------------------------------------------------------------------------------------------- */
 
 #add-window {
-  position: fixed;
-  background-color: #222;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 30em;
-  padding: none;
-  border: 1px #fff solid;
-}
+    position: fixed;
+    background-color: #222;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    padding: none;
+    border: 1px #fff solid;
+  }
 
 #add-window h1 {
-  font-size: 1.5em;
-  text-align: center;
+    font-size: 1.5em;
+    text-align: center;
 }
 
+/* Different widths of inputs for related names */
 #add-window .full-width {
-  width: 28.5em;
-  margin: 0.5em;
+    width: 28.5em;
+    margin: 0.5em;
 }
 
 #add-window .half-width{
-  width: 13.75em;
-  margin: 0.5em 0 0.5em 0.5em;
+    width: 13.75em;
+    margin: 0.5em 0 0.5em 0.5em;
 }
 
+/* Flexbox used to correctly space bottom buttons */
 #add-button-container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #add-window button {
-  padding: 0.25em;
-  margin: 0.5em;
-  border: solid 1px #fff;
-}
-
-.sort-faded {
-  opacity: 0.3;
+    padding: 0.25em;
+    margin: 0.5em;
+    border: solid 1px #fff;
 }

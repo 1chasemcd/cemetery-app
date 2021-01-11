@@ -4,40 +4,52 @@
     <meta charset="UTF-8">
     <title></title>
 
+    <!-- Using fontawesome for icons -->
     <link href="fonts/fontawesome/all.css" rel="stylesheet">
+
     <link href="styles.css" rel="stylesheet">
 
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
 <body>
+    <!-- Div to enclose content to blur in background when add window opens -->
     <div id="blur-content">
-        <div class="menu-bar"><!-- 
-        --><input id="search-bar" type="search" placeholder="Search"><!-- 
-        --><button id="settings-button"><i class="fas fa-cog"></i></button><!-- 
-        --><button id="add-entry-button"><i class="fas fa-plus"></i></button>
-    </div>
+        <!-- Div to house search bar and header buttons -->
+        <div id="menu-bar"><!-- 
+            --><input id="search-bar" type="search" placeholder="Search"><!-- 
+            --><button id="settings-button"><i class="fas fa-cog"></i></button><!-- 
+            --><button id="add-entry-button"><i class="fas fa-plus"></i></button>
+        </div>
 
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>Entry Date<span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-sort-up fa-stack-1x"></i></span></th>
-                <th>Deceased Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
-                <th>Contact Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
-                <th>Contact Email <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
-                <th>Contact Phone <span class="fa-stack"><i class="fas fa-sort fa-stack-1x sort-faded"></i><i class="fas fa-stack-1x"></i></span></th>
-            </tr>
-        </thead>
+        <!-- Space below fixed header -->
+        <div id="spacer"></div>
 
-        <tbody>
-            
-        </tbody>
-    </table>
+        <!-- Table to hold cemetary data -->
+        <table id="data-table">
+            <!-- Table header is static content -->
+            <thead>
+                <tr>
+                    <!-- First column will hold edit/map buttons, so no title is needed -->
+                    <th></th>
+                    <th>Entry Date<span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-sort-up fa-stack-1x"></i></span></th>
+                    <th>Deceased Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Contact Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Address <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Email <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Phone <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                </tr>
+            </thead>
+
+            <!-- Table body to be filled by js -->
+            <tbody></tbody>
+        </table>
     </div>
     
-
-    <div id="add-window" style="visibility: hidden;">
-        <h1 id="add-title" style="visibility: hidden;">Add Entry</h1>
-        <h1 id="edit-title" style="visibility: hidden;">Edit Entry</h1>
+    <!-- Window to popup to add/edit a data table entry -->
+    <div id="add-window" style="display: none;">
+        <!-- Different headings to be displayed by js in different contexts -->
+        <h1 id="add-title" style="display: none;">Add Entry</h1>
+        <h1 id="edit-title" style="display: none;">Edit Entry</h1>
 
         <input class="half-width" type="text" placeholder="Deceased First Name"><!-- 
         --><input class="half-width" type="text" placeholder="Deceased Last Name">
@@ -45,16 +57,19 @@
         <input class="half-width" type="text" placeholder="Contact First Name"><!-- 
         --><input class="half-width" type="text" placeholder="Contact Last Name">
 
-        <input class="full-width" type="text" placeholder="Contact Email">
-        <input class="full-width" type="text" placeholder="Contact Phone">
+        <input class="full-width" type="text" placeholder="Address">
+        <input class="full-width" type="text" placeholder="Email">
+        <input class="full-width" type="text" placeholder="Phone">
 
+        <!-- Div to evenly space two out of the three buttons -->
         <div id="add-button-container">
             <button id="close-add-button">Cancel</button>
-            <button id="submit-add-button" style="visibility: hidden;">Submit</button>
-            <button id="submit-edit-button" style="visibility: hidden;">Submit</button>
+            <button id="submit-add-button" style="display: none;">Submit</button>
+            <button id="submit-edit-button" style="display: none;">Submit</button>
         </div>
     </div>
 
+    <!-- Start render script -->
     <script src="renderer.js"></script>
 </body>
 </html>
