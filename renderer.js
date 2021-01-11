@@ -1,5 +1,4 @@
 // To-do list:
-// * Implement multiple pages so more than 50 docs can be displayed
 // * Allow user to edit location of database
 // * Add menu bar items
 // * Add keyboard shortcuts
@@ -81,7 +80,7 @@ function getEntries() {
     }
 
     // Finalize gathering of documents. Only select 50 entries at a time for performance reasons
-    sortedDocs.skip(50 * dbState.page).limit(50).exec(function(err, docs) {
+    sortedDocs.exec(function(err, docs) {
         if (err) console.log(err);
 
         loadEntriesInTable(docs);
@@ -144,7 +143,7 @@ function loadEntriesInTable(docs) {
 function showAddWindow() {
     document.querySelector("#add-title").style.display = "inherit";
     document.querySelector("#submit-add-button").style.display = "inherit";
-    document.querySelector("#blur-content").style.filter = "blur(2px)";
+    document.querySelector("#blur-content").style.filter = "blur(3px)";
     document.querySelector("#add-window").style.display = "inherit";
 }
 
@@ -167,7 +166,7 @@ function showEditWindow(id) {
         document.querySelector("#edit-title").style.display = "inherit";
         document.querySelector("#submit-edit-button").style.display = "inherit";
 
-        document.querySelector("#blur-content").style.filter = "blur(2px)";
+        document.querySelector("#blur-content").style.filter = "blur(3px)";
         document.querySelector("#add-window").style.display = "inherit";
     });
 }
