@@ -63,13 +63,15 @@ function randomEntry() {
 
     let phone = randomInt(100, 999) + " " + randomInt(100, 999) + " " + randomInt(1000, 9999);
 
+    let position = '"x": ' + (randomInt(0, 1000) / 1000) + ',"y": ' + (randomInt(0, 1000) / 1000);
+
     let _id = randomString(16)
 
-    let lineString = `{"date":{"$$date":${date}},"name":"${name}","contact":"${contact}","address":"${address}","email":"${email}","phone":"${phone}","_id":"${_id}"}`;
+    let lineString = `{"date":{"$$date":${date}},"name":"${name}","contact":"${contact}","address":"${address}","email":"${email}","phone":"${phone}","position":{${position}},"_id":"${_id}"}`;
 
     return lineString
 }
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100; i++) {
     document.write(randomEntry() + "<br>");
 }

@@ -2,7 +2,7 @@
 // * Allow user to edit location of database
 // * Add menu bar items
 // * Add keyboard shortcuts
-// * Add location/map functionality
+// * Add phone formatting
 // * Add any other requested user info
 
 // --------------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 // Open database
 let Datastore = require("nedb");
 const homedir = require("os").homedir();
-db = new Datastore({filename: homedir + "/Cemetery Database/database.db", autoload: true});
+let db = new Datastore({filename: homedir + "/Cemetery Database/database.db", autoload: true});
 
 
 // Variables to store database state
@@ -24,6 +24,9 @@ let dbState = {
     editingID: "",
     editingDate: ""
 };
+
+let addMap = new Map(document.querySelector("#add-map"));
+let viewMap = new Map(document.querySelector("#view-map"));
 
 // --------------------------------------------------------------------------------------------
 // Function to collect entries in correct order based on database state variables
@@ -104,7 +107,7 @@ function loadEntriesInTable(docs) {
         // Add edit and map icon buttons to first column in each table row
         htmlString += `<td style="cursor: default">
                            <i class=\"fas fa-pen\" onclick=\"showEditWindow('${doc._id}')\"></i>
-                           <i class=\"fas fa-map-marker-alt\"></i>
+                           <i class=\"fas fa-map-marker-alt\" onclick=\"showMapWindow('${doc._id}')\"></i>
                        </td>`;
         
         for (let key in doc) {
@@ -119,7 +122,7 @@ function loadEntriesInTable(docs) {
             }
 
             // Don't display randomly generated alpha-numeric id
-            if (key != "_id") {
+            if (key != "_id" && key != "position") {
                 htmlString += "<td>" + value + "</td>";
             }
         }
@@ -145,6 +148,8 @@ function showAddWindow() {
     document.querySelector("#submit-add-button").style.display = "inherit";
     document.querySelector("#blur-content").style.filter = "blur(3px)";
     document.querySelector("#add-window").style.display = "inherit";
+
+    addMap.clear();
 }
 
 // Opening edit window also requires loading previous content into inputs and saving id in dbState
@@ -163,11 +168,58 @@ function showEditWindow(id) {
         inputs[5].value = doc.email;
         inputs[6].value = doc.phone;
 
+        addMap.position.x = doc.position.x;
+        addMap.position.y = doc.position.y;
+
         document.querySelector("#edit-title").style.display = "inherit";
         document.querySelector("#submit-edit-button").style.display = "inherit";
 
         document.querySelector("#blur-content").style.filter = "blur(3px)";
         document.querySelector("#add-window").style.display = "inherit";
+        addMap.draw();
+    });
+}
+
+// Function to format phone number inputs
+function formatPhoneInput() {
+    let inputNode = document.querySelector("#phone-input");
+    let originalCursorPosition = inputNode.selectionStart;
+    let originalValue = inputNode.value;
+
+    let validChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let unformattedNumber = "";
+
+    for (let char of originalValue) {
+        if (char in validChars) {
+            unformattedNumber += char;
+        }
+    }
+
+    if (unformattedNumber.length <= 3) {
+        formattedNumber = unformattedNumber;
+
+    } else if (unformattedNumber.length <= 6) {
+        formattedNumber = unformattedNumber.substring(0, 3) + " " + unformattedNumber.substring(3); 
+
+    } else {
+        formattedNumber = unformattedNumber.substring(0, 3) + " " + unformattedNumber.substring(3, 6) + " " + unformattedNumber.substring(6, 10); 
+    }
+
+    let newCursorPosition = originalCursorPosition + (formattedNumber.length - originalValue.length);
+
+    inputNode.value = formattedNumber;
+    inputNode.setSelectionRange(newCursorPosition, newCursorPosition);
+}
+
+function showMapWindow(id) {
+    searchedDocs = db.findOne({ _id: id }, function (err, doc) {
+        if (err) console.log(err);
+
+        document.querySelector("#blur-content").style.filter = "blur(3px)";
+        document.querySelector("#map-title").innerHTML = "Location of " + doc.name;
+        document.querySelector("#map-window").style.display = "inherit";
+        viewMap.position = {x: doc.position.x, y: doc.position.y};
+        viewMap.draw();
     });
 }
 
@@ -188,6 +240,12 @@ function hideAddWindow() {
     }
 }
 
+// Hide window
+function hideMapWindow() {
+    document.querySelector("#blur-content").style.filter = "blur(0px)";
+    document.querySelector("#map-window").style.display = "none";
+}
+
 // --------------------------------------------------------------------------------------------
 // Functions to change database content when entry created or edited
 // --------------------------------------------------------------------------------------------
@@ -202,7 +260,8 @@ function addEntry() {
                 contact: inputs[3].value + ", " + inputs[2].value,
                 address: inputs[4].value,
                 email: inputs[5].value,
-                phone: inputs[6].value };
+                phone: inputs[6].value,
+                position: {x: addMap.position.x, y: addMap.position.y} };
 
     // Put document into database
     db.insert(doc, function (err, newDoc) {   
@@ -222,7 +281,8 @@ function editEntry() {
                 contact: inputs[3].value + ", " + inputs[2].value,
                 address: inputs[4].value,
                 email: inputs[5].value,
-                phone: inputs[6].value };
+                phone: inputs[6].value,
+                position: {x: addMap.position.x, y: addMap.position.y} };
     
 
     // Update document associated with previously stored id
@@ -281,10 +341,23 @@ document.querySelector("#submit-edit-button").addEventListener("click", function
     hideAddWindow();
 });
 
+document.querySelector("#add-map").addEventListener('click', function(event) {
+    addMap.onClick(event.offsetX, event.offsetY);
+});
+
+document.querySelector("#close-map-button").addEventListener("click", function() {
+    hideMapWindow();
+});
+
 // Event lister to make real-time updates to table based on search bar filter
 document.querySelector("#search-bar").addEventListener("input", function() {
     dbState.search = document.querySelector("#search-bar").value;
     getEntries();
+});
+
+// Event lister to format phone number input when it is used
+document.querySelector("#phone-input").addEventListener("input", function() {
+    formatPhoneInput();
 });
 
 // Add event listener to set sort criteria based on which heading is clicked

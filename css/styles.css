@@ -9,8 +9,8 @@
     font-style: normal;
     font-weight: 200;
     src: local(''),
-        url('fonts/inconsolata/inconsolata-v20-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('fonts/inconsolata/inconsolata-v20-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inconsolata-regular - latin */
@@ -19,8 +19,8 @@
     font-style: normal;
     font-weight: 400;
     src: local(''),
-        url('fonts/inconsolata/inconsolata-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('fonts/inconsolata/inconsolata-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inconsolata-800 - latin */
 @font-face {
@@ -28,8 +28,8 @@
     font-style: normal;
     font-weight: 800;
     src: local(''),
-        url('fonts/inconsolata/inconsolata-v20-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('fonts/inconsolata/inconsolata-v20-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../assets/fonts/inconsolata/inconsolata-v20-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* ----------------------------------------------------------------------------------------------
@@ -166,6 +166,12 @@ tbody tr:nth-child(odd) {
     margin: 0.5em 0 0.5em 0.5em;
 }
 
+#add-window canvas {
+    width: 28.5em;
+    height: calc(28.5em * (1328/2225));
+    margin: 0.75em;
+}
+
 /* Flexbox used to correctly space bottom buttons */
 #add-button-container {
     display: flex;
@@ -173,6 +179,38 @@ tbody tr:nth-child(odd) {
 }
 
 #add-window button {
+    padding: 0.25em;
+    margin: 0.5em;
+    border: solid 1px #fff;
+}
+
+/* ----------------------------------------------------------------------------------------------
+   Styles for map window
+   ------------------------------------------------------------------------------------------- */
+
+#map-window {
+    position: fixed;
+    background-color: #222;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    padding: none;
+    border: 1px #fff solid;
+  }
+
+#map-window h1 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#map-window canvas {
+    width: 28.5em;
+    height: calc(28.5em * (1328/2225));
+    margin: 0.75em;
+}
+
+#map-window button {
     padding: 0.25em;
     margin: 0.5em;
     border: solid 1px #fff;

@@ -5,9 +5,9 @@
     <title></title>
 
     <!-- Using fontawesome for icons -->
-    <link href="fonts/fontawesome/all.css" rel="stylesheet">
+    <link href="assets/fonts/fontawesome/all.css" rel="stylesheet">
 
-    <link href="styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
@@ -17,7 +17,6 @@
         <!-- Div to house search bar and header buttons -->
         <div id="menu-bar"><!-- 
             --><input id="search-bar" type="search" placeholder="Search"><!-- 
-            --><button id="settings-button"><i class="fas fa-cog"></i></button><!-- 
             --><button id="add-entry-button"><i class="fas fa-plus"></i></button>
         </div>
 
@@ -59,7 +58,9 @@
 
         <input class="full-width" type="text" placeholder="Address">
         <input class="full-width" type="text" placeholder="Email">
-        <input class="full-width" type="text" placeholder="Phone">
+        <input id="phone-input" class="full-width" type="text" placeholder="Phone">
+
+        <canvas id="add-map" width="2225" height="1328"></canvas>
 
         <!-- Div to evenly space two out of the three buttons -->
         <div id="add-button-container">
@@ -69,7 +70,17 @@
         </div>
     </div>
 
+    <div id="map-window" style="display: none;">
+        <h1 id="map-title"></h1>
+        <canvas id="view-map"></canvas>
+        <button id="close-map-button">Close</button>
+    </div>
+
+    <!-- Load map background image onto page and hide it -->
+    <img src="assets/images/map.png" width="0" height="0" id="map-img">
+
+    <script src="js/map.js"></script>
     <!-- Start render script -->
-    <script src="renderer.js"></script>
+    <script src="js/renderer.js"></script>
 </body>
 </html>
