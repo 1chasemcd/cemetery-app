@@ -10,9 +10,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^11.1.0"
+    "electron": "^11.2.2"
   },
   "dependencies": {
     "nedb": "^1.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1chasemcd/cemetery-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1chasemcd/cemetery-app/issues"
+  },
+  "homepage": "https://github.com/1chasemcd/cemetery-app#readme"
 }
