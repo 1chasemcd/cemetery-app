@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- Using fontawesome for icons -->
+    <link href="assets/fonts/fontawesome/all.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+    <!-- Div to house search bar and header buttons -->
+    <div id="menu-bar"><!-- 
+        --><input id="search-bar" type="search" placeholder="Search"><!-- 
+        --><span id="edit-page-tab"><i class="fas fa-edit"></i></span><!-- 
+        --><span id="add-page-tab"><i class="fas fa-plus"></i></span><!-- 
+        --><span id="map-page-tab"><i class="fas fa-map-marked-alt"></i></span><!-- 
+        --><span id="table-page-tab"><i class="fas fa-th-list"></i></span><!-- 
+    --></div>
+
+    <!-- Space below fixed header -->
+    <div id="spacer"></div>
+
+    <!---------------------------------------------------------------------------------------------------------------->
+    <div id="table-page" style="display: none;">
+
+        <!-- Table to hold cemetary data -->
+        <table id="data-table">
+            <!-- Table header is static content -->
+            <thead>
+                <tr>
+                    <th>Entry Date<span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-sort-up fa-stack-1x"></i></span></th>
+                    <th>Deceased Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Contact Name <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Address <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Email <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                    <th>Phone <span class="fa-stack"><i class="fas fa-sort fa-stack-1x"></i><i class="fas fa-stack-1x"></i></span></th>
+                </tr>
+            </thead>
+
+            <!-- Table body to be filled by js -->
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------------------->
+    <div id="map-page" style="display: none;">
+        <canvas id="main-map" width="2225" height="1328"></canvas>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------------------->
+    <div id="add-page" style="display: none;">
+        <!-- Different headings to be displayed by js in different contexts -->
+        <h1 id="add-title" style="display: none;">Add Entry</h1>
+        <h1 id="edit-title" style="display: none;">Edit Entry</h1>
+
+        <div id="input-container">
+            <span class="horizontal-input-container">
+                <input type="text" placeholder="Deceased First Name">
+                <input type="text" placeholder="Deceased Last Name">
+            </span><!-- 
+
+            --><span class="horizontal-input-container">
+                <input type="text" placeholder="Contact First Name">
+                <input type="text" placeholder="Contact Last Name">
+            </span>
+
+            <br>
+
+            <span id="vertical-input-container">
+                <input type="text" placeholder="Address">
+                <input type="text" placeholder="Email">
+                <input id="phone-input" class="full-width" type="text" placeholder="Phone">
+            </span><!-- 
+
+             --><textarea wrap="soft" rows="5" placeholder="Notes"></textarea>
+        
+        </div>
+
+        <canvas id="edit-map" width="2225" height="1328"></canvas>
+
+        <!-- Div to evenly space two out of the three buttons -->
+        <div id="add-button-container"  class="centered-button-container" style="display: none;">
+            <button id="close-add-button">Cancel</button>
+            <button id="submit-add-button">Submit</button>
+        </div>
+
+        <!-- Div to evenly space two out of the three buttons -->
+        <div id="edit-button-container"  class="centered-button-container" style="display: none;">
+            <button id="close-edit-button">Close</button>
+            <button id="delete-edit-button">Delete</button>
+            <button id="submit-edit-button">Submit</button>
+        </div>
+
+        <div id="delete-window" style="display: none">
+            Are you sure you want to delete this entry? This action can't be undone.
+            <div class="centered-button-container">
+                <button id="close-delete-button">Cancel</button>
+                <button id="submit-delete-button">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Load map background image onto page and hide it -->
+    <img src="assets/images/map.png" width="0" height="0" id="map-img">
+
+    <script src="js/mapcanvas.js"></script>
+
+    <!-- Start render script -->
+    <script src="js/renderer.js"></script>
+</body>
+</html>
