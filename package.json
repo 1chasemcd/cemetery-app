@@ -1,6 +1,6 @@
 {
   "name": "cemetery-app",
-  "productName": "Cemetery Database",
+  "productName": "CemeteryDatabase",
   "version": "1.0.1",
   "description": "An app to manage a database of cemetery entries",
   "main": "src/main.js",
@@ -17,18 +17,23 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "./resources/icon.icns"
+        "icon": "./resources/icon.ico"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-zip",
+          "config": {
+            "name": "cemetery_app"
+          },
           "platforms": [
             "darwin"
           ]
         },
         {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "CemeteryDatabase"
+          }
         }
       ]
     }
@@ -40,8 +45,9 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "11.3.0",
-    "electron-installer-dmg": "^3.0.0"
+    "electron": "11.3.0"
   }
 }

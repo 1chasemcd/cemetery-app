@@ -1,5 +1,7 @@
 const { app, BrowserWindow, screen, Menu} = require('electron');
 
+
+// 76780 Blue Mountain School Road Cottage Grove Oregon
 function createWindow () {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize
 

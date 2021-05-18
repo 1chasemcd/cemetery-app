@@ -237,23 +237,23 @@ textarea {
 
 #main-map {
     display: block;
-    width: min(95vw, calc((95vh - 2.5em) * 2225 / 1328));
-    height: min(calc(95vh - 2.5em), calc(95vw * 1328 / 2225));
+    width: min(95vw, calc((95vh - 2.5em) * 1 / 1));
+    height: min(calc(95vh - 2.5em), calc(95vw * 1 / 1));
     margin: auto;
-    margin-top: calc((calc(100vh - 2.5em) - min(calc(95vh - 2.5em), calc(95vw * 1328 / 2225))) / 2);
+    margin-top: calc((calc(100vh - 2.5em) - min(calc(95vh - 2.5em), calc(95vw * 1 / 1))) / 2);
 }
 
 @media screen and (max-width: 42em) {
     #edit-map {
         width: 21em;
-        height: calc(21em * 1328 / 2225);
+        height: calc(21em * 1 / 1);
     }
 }
 
 @media screen and (min-width: 42em) {
     #edit-map {
         width: 42em;
-        height: calc(42em * 1328 / 2225);
+        height: calc(42em * 1 / 1);
     }
 }
 
